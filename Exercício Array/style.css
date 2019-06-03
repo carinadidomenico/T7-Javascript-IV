@@ -1,0 +1,30 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: antiquewhite;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#btn {
+    color: aliceblue;
+    background-color: purple;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+#input {
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin-top: 20%;
+}
+
+p {
+    text-align: center;
+}
