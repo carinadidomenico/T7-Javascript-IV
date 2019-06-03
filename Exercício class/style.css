@@ -1,0 +1,64 @@
+
+#buttons-section {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+}
+
+button{
+    padding: 15px 50px;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+.branco {
+    background-color: white;
+    color: blueviolet;
+}
+
+.roxo {
+    background-color: blueviolet;
+    color: white;
+}
+
+.lilas {
+    background-color: #c18cf34a;
+    color: blueviolet;
+}
+
+.disabled {
+    background-color: #c1c0c052;
+    color: #b1afafab;
+}
+
+.disabled-white {
+    background-color: white;
+    color: #b1afafab;
+}
+
+.grande {
+    font-size: 16px;
+    text-transform: uppercase;    
+}
+
+.pequeno {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.borda-roxa {
+    border: 2px solid blueviolet;
+}
+
+.borda-cinza {
+    border: 2px solid #b1afafab;
+}
+
+.sem-borda {
+    border: none;
+}
+
