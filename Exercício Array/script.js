@@ -13,17 +13,20 @@ let resposta = document.querySelector ('p');
 
 
 btn.addEventListener ('click', function(event){
-    event.preventDefault();
     input.value.innerHTML = '';
+    event.preventDefault();
     
-    const verificacao = nomesNoRole.toLowerCase().find(input.value.toLowerCase());
+    const verificacao = nomesNoRole.includes(input.value);
     if (verificacao == true) {
         resposta.innerHTML = `✓ <strong>${input.value}</strong> estava no rolê.`;
+        input.setAttribute ('class', 'valido');
         
     } else if (input.value == '' || input.value == 0) {
         resposta.innerHTML = " ";
+        input.removeAttribute ('class', 'invalido valido');
     } else {        
         resposta.innerHTML = `X <strong>${input.value}</strong> não estava no rolê.`;
+        input.setAttribute ('class', 'invalido');
     }
 })
 
