@@ -13,29 +13,49 @@ const getData = url => {
     return new Promise((resolve, reject)=>{
         const requisicao = new XMLHttpRequest();
         requisicao.open ("GET", url);
-    
+        
         requisicao.onload = function() {
             if (requisicao.status === 200){
                 const resposta = JSON.parse(requisicao.responseText)
                 resolve (resposta)
             }
         }
+        
+        requisicao.onerror = () => {
+            reject ("CEP inválido")
+        }
         requisicao.send()
     })
 }
 
-cepInput.addEventListener('blur', () => {
+cepInput.addEventListener('keyup', () => {
+
     const valorDoCampo = cepInput.value;
-    getData (`https://viacep.com.br/ws/${valorDoCampo}/json/`)
-    .then (resultadoAPI => {
-        cepInput.value = resultadoAPI.cep
-        logradouroInput.value = resultadoAPI.logradouro
-        complementoInput.value = resultadoAPI.complemento
-        bairroInput.value = resultadoAPI.bairro
-        localidadeInput.value = resultadoAPI.bairro
-        ufInput.value = resultadoAPI.uf
-    })
-    .catch (erro => {
-        cepError.innerHTML = erro
-    })
+    
+    if (valorDoCampo) {
+        getData (`https://viacep.com.br/ws/${valorDoCampo}/json/`)
+        .then (resultadoAPI => {
+            cepError.innerHTML = ""
+            cepInput.classList.remove("error")
+            cepInput.value = resultadoAPI.cep
+            logradouroInput.value = resultadoAPI.logradouro
+            complementoInput.value = resultadoAPI.complemento
+            bairroInput.value = resultadoAPI.bairro
+            localidadeInput.value = resultadoAPI.bairro
+            ufInput.value = resultadoAPI.uf
+        })
+        .catch (erro => {
+            cepInput.classList.add("error")
+            cepError.innerHTML = erro
+            logradouroInput.value = ""
+            complementoInput.value = ""
+            bairroInput.value = ""
+            localidadeInput.value = ""
+            ufInput.value = "" 
+        })
+    } else {
+        cepInput.classList.add("error")
+        cepError.innerHTML = "Campo obrigatório"        
+    }
+
 })
