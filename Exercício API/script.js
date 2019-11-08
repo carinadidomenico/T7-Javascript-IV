@@ -5,7 +5,7 @@ const complementoInput = document.getElementById('complemento');
 const bairroInput = document.getElementById('bairro');
 const localidadeInput = document.getElementById('localidade');
 const ufInput = document.getElementById('uf');
-const cepError = document.getElementById('cep-error')
+const cepError = document.getElementById('cep-error');
 
 
 
@@ -16,13 +16,13 @@ const getData = url => {
         
         requisicao.onload = function() {
             if (requisicao.status === 200){
-                const resposta = JSON.parse(requisicao.responseText)
-                resolve (resposta)
+                const resposta = JSON.parse(requisicao.responseText);
+                resolve (resposta);
             }
         }
         
         requisicao.onerror = () => {
-            reject ("CEP inválido")
+            reject ("CEP inválido");
         }
         requisicao.send()
     })
@@ -41,7 +41,7 @@ cepInput.addEventListener('keyup', () => {
             logradouroInput.value = resultadoAPI.logradouro
             complementoInput.value = resultadoAPI.complemento
             bairroInput.value = resultadoAPI.bairro
-            localidadeInput.value = resultadoAPI.bairro
+            localidadeInput.value = resultadoAPI.localidade
             ufInput.value = resultadoAPI.uf
         })
         .catch (erro => {
